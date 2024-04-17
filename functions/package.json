@@ -4,7 +4,7 @@
     "lint": "eslint --ext .js,.ts .",
     "build": "tsc",
     "build:watch": "tsc --watch",
-    "serve": "npm run build && firebase emulators:start --only functions",
+    "serve": "concurrently \"npm:build:watch\" \"firebase emulators:start --only functions\"",
     "shell": "npm run build && firebase functions:shell",
     "start": "npm run shell",
     "deploy": "firebase deploy --only functions",
@@ -15,10 +15,15 @@
   },
   "main": "lib/index.js",
   "dependencies": {
+    "axios": "^1.6.8",
+    "concurrently": "^8.2.2",
     "firebase-admin": "^11.8.0",
-    "firebase-functions": "^4.3.1"
+    "firebase-functions": "^4.3.1",
+    "qrcode": "^1.5.3",
+    "telegraf": "^4.16.3"
   },
   "devDependencies": {
+    "@types/qrcode": "^1.5.5",
     "@typescript-eslint/eslint-plugin": "^5.12.0",
     "@typescript-eslint/parser": "^5.12.0",
     "eslint": "^8.9.0",
