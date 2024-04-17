@@ -11,3 +11,5 @@
 .firebase/
 
 # End of https://www.toptal.com/developers/gitignore/api/firebase
+
+**/firebase-debug.log
