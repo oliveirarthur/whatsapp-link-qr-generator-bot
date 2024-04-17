@@ -38,10 +38,12 @@ jobs:
         env: 
           BOT_ENDPOINT: ${{ secrets.BOT_ENDPOINT }}
           BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          BOT_SECRET: ${{ secrets.BOT_SECRET }}
           GOOGLE_APPLICATION_CREDENTIALS_JSON: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_WHATSAPP_LINK_GENERATOR_4AA16 }}
         working-directory: ./functions
         run: |
           echo "BOT_ENDPOINT=$BOT_ENDPOINT" >> .env
+          echo "BOT_SECRET=$BOT_SECRET" >> .env
           echo "BOT_TOKEN=$BOT_TOKEN" >> .env
           echo "$GOOGLE_APPLICATION_CREDENTIALS_JSON" > credentials.json
 
