@@ -25,7 +25,10 @@ module.exports = {
     "import",
   ],
   rules: {
-    "quotes": ["error", "double"],
+    "max-len": ["error", { "ignoreStrings": true }],
+    "linebreak-style": 0,
+    "object-curly-spacing": ["error", "always"],
+    "quotes": ["error", "double", { "allowTemplateLiterals": true }],
     "import/no-unresolved": 0,
     "indent": ["error", 2],
   },
