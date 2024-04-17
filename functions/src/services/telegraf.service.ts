@@ -1,9 +1,12 @@
 import * as logger from "firebase-functions/logger";
+import { defineString } from "firebase-functions/params";
 import * as QRCode from "qrcode";
 import { Input, Telegraf } from "telegraf";
 import { message } from "telegraf/filters";
 
-export const bot = new Telegraf(process.env.BOT_TOKEN!);
+const BOT_TOKEN = defineString("BOT_TOKEN").value();
+
+export const bot = new Telegraf(BOT_TOKEN);
 
 bot.start((ctx) => {
   const msg = [

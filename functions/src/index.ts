@@ -1,4 +1,5 @@
 import * as logger from "firebase-functions/logger";
+import { defineString } from "firebase-functions/params";
 import { onRequest } from "firebase-functions/v2/https";
 import { bot } from "./services/telegraf.service";
 
@@ -13,8 +14,10 @@ export const setup = onRequest(async (req, res) => {
     headers: req.headers,
   });
 
+  const BOT_ENDPOINT = defineString("BOT_ENDPOINT").value();
+
   const results = await Promise.all([
-    bot.telegram.setWebhook(process.env.BOT_ENDPOINT!),
+    bot.telegram.setWebhook(BOT_ENDPOINT),
     bot.telegram.setMyCommands([
       {
         command: "start",
