@@ -1,12 +1,15 @@
+import * as logger from "firebase-functions/logger";
+import * as QRCode from "qrcode";
 import { Input, Telegraf } from "telegraf";
 import { message } from "telegraf/filters";
-import * as QRCode from "qrcode";
-import * as logger from "firebase-functions/logger";
 
 export const bot = new Telegraf(process.env.BOT_TOKEN!);
 
 bot.start((ctx) => {
-  const msg = "Olá! Informe um número de telefone para obter um link para o WhatsApp - sem adiciona-lo aos contatos!";
+  const msg = [
+    "Olá!",
+    "Informe um número de telefone para obter um link para o WhatsApp - sem adiciona-lo aos contatos!",
+  ].join("\n");
   return ctx.reply(msg);
 });
 
