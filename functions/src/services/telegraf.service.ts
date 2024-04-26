@@ -22,16 +22,16 @@ bot.on(message("text"), async (ctx) => {
 
     // validates user input
     const numberLength = number.toString().length;
-    const isValidLength = numberLength >= 11;
+    const isValidLength = numberLength >= 10;
 
     if (!isValidLength) {
       return ctx.reply(
-        `Por favor informe um telefone com 11 digitos (DDD e telefone) ou mais`
+        `Por favor informe um telefone com 10 digitos (DDD e telefone) ou mais`
       );
     }
 
     // creates wa.me link
-    const numberToConcatenate = numberLength === 11 ? `55${number}` : number;
+    const numberToConcatenate = numberLength <= 11 ? `55${number}` : number;
     const link = `https://wa.me/${numberToConcatenate}`;
 
     // generate QR code - useful to share with others!
